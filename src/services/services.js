@@ -70,4 +70,6 @@ function sanitize(word) {
 
 module.exports = {
   verifyWords,
+  shuffle,
+  sanitize
 };
