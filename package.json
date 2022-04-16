@@ -1,0 +1,23 @@
+{
+  "name": "tratamento-de-palavras",
+  "version": "1.0.0",
+  "description": "recebe uma serie de palavras e faz o tratamento delas",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "author": "Renato Nakamura",
+  "license": "MIT",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.10",
+    "cors": "^2.8.5",
+    "express": "^4.17.3",
+    "nodemon": "^2.0.15",
+    "request-promise": "^4.2.6"
+  },
+  "devDependencies": {
+    "jest": "^27.5.1"
+  }
+}
