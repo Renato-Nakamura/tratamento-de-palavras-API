@@ -1,8 +1,8 @@
 const cheerio = require("cheerio");
 const rp = require("request-promise");
+const palavroes = require("../data/palavroes");
 
 async function verifyWords(words, onlySingular) {
-
   let validWords = words.map(async (word, i) => {
     let options = {
       uri: "https://www.dicio.com.br/" + sanitize(word),
@@ -23,7 +23,7 @@ async function verifyWords(words, onlySingular) {
       .catch(() => {
         return false;
       });
-      
+
     return wordInDicio;
   });
 
@@ -70,8 +70,13 @@ function sanitize(word) {
     .replace(/[^\w\s-]/gi, "");
 }
 
+function removeBadWords(words) {
+  return words.filter((word) => !palavroes.includes(sanitize(word)));
+}
+
 module.exports = {
   verifyWords,
   shuffle,
   sanitize,
+  removeBadWords
 };
