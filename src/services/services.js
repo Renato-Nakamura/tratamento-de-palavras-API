@@ -1,43 +1,45 @@
 const cheerio = require("cheerio");
 const rp = require("request-promise");
 
-async function verifyWords(words) {
-  return words.map(async (a, i) => {
+async function verifyWords(words, onlySingular) {
+
+  let validWords = words.map(async (word, i) => {
     let options = {
-      uri: "https://www.dicio.com.br/" + sanitize(a),
+      uri: "https://www.dicio.com.br/" + sanitize(word),
       transform: (body) => {
         return cheerio.load(body);
       },
     };
-    let word = await rp(options)
+    let wordInDicio = await rp(options)
       .then(($) => {
         if ($(".word-nf").text()) {
           return false;
         }
-        if ($(".tit-significado--singular").text()) {
+        if (onlySingular && $(".tit-significado--singular").text()) {
           return false;
         }
         return $("h1").text();
       })
       .catch(() => {
-        // console.log('erro',palavras[i])
         return false;
       });
-    return word;
+      
+    return wordInDicio;
   });
+
+  let verifiedWords = await Promise.all(validWords);
+
+  return verifiedWords.filter((a) => a != false);
 }
 
 function shuffle(array) {
   let currentIndex = array.length,
     randomIndex;
 
-  // While there remain elements to shuffle.
   while (currentIndex != 0) {
-    // Pick a remaining element.
     randomIndex = Math.floor(Math.random() * currentIndex);
     currentIndex--;
 
-    // And swap it with the current element.
     [array[currentIndex], array[randomIndex]] = [
       array[randomIndex],
       array[currentIndex],
@@ -71,5 +73,5 @@ function sanitize(word) {
 module.exports = {
   verifyWords,
   shuffle,
-  sanitize
+  sanitize,
 };
