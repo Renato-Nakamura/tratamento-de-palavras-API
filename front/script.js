@@ -1,12 +1,20 @@
 const verificar = () => {
   let words = document.querySelector("#words").value;
   const resposta = document.querySelector("#resposta");
+  const onlyValidWords = document.querySelector("#onlyValidWords").checked;
+  const onlySingular = document.querySelector("#onlySingular").checked;
+  const random = document.querySelector("#random").checked;
+  const removeBadWords = document.querySelector("#removeBadWords").checked;
   words = words.split(",");
   let body = {
-    random: true,
+    filters: {
+      onlyValidWords: onlyValidWords,
+      onlySingular: onlySingular,
+      random: random,
+      removeBadWords: removeBadWords,
+    },
     words: words,
   };
-  console.log(words);
   fetch("/verificar", {
     method: "POST",
     headers: {
