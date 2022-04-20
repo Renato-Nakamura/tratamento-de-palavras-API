@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tratamento de palavras</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <header>
+        <h1>TRATAMENTO DE PALAVRAS</h1>
+        <a href="/doc">Documentação</a>
+    </header>
+    <div class="options">
+        <label>
+            <input id="onlyValidWords" type="checkbox" name="c-group" checked>
+            <span class="label-text">Apenas palavras válidas</span>
+        </label>
+        <label>
+            <input id="onlySingular" type="checkbox" name="c-group">
+            <span class="label-text">Apenas singular</span>
+        </label>
+        <label>
+            <input id="random" type="checkbox" name="c-group">
+            <span class="label-text">Embaralhar palavras</span>
+        </label>
+        <label>
+            <input id="removeBadWords" type="checkbox" name="c-group">
+            <span class="label-text">Remover palavrões</span>
+        </label>
+    </div>
+    
+    <main>
+        <div class="textareas">
+            <h2>LISTA DE PALAVRAS</h2>
+            <div class="linha"></div>
+            <textarea name="words" id="words" cols="30" rows="10"></textarea>
+            <button onclick="verificar()">Enviar</button>
+        </div>
+        <div class="textareas">
+            <h2>PALAVRAS FILTRADAS</h2>
+            <div class="linha"></div>
+
+            <textarea id="resposta"></textarea>
+        </div>
+    </main>
+    <script src="./script.js"></script>
+</body>
+
+</html>

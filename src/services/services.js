@@ -18,6 +18,7 @@ async function verifyWords(words, onlySingular) {
         if (onlySingular && $(".tit-significado--singular").text()) {
           return false;
         }
+        if ($("h1").text()[0] == $("h1").text()[0].toUpperCase()) return false;
         return $("h1").text();
       })
       .catch(() => {
@@ -78,5 +79,5 @@ module.exports = {
   verifyWords,
   shuffle,
   sanitize,
-  removeBadWords
+  removeBadWords,
 };
