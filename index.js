@@ -9,8 +9,8 @@ app.use(
     origin: "*",
   })
 );
-app.use(express.static(__dirname + "/insomnia"));
 app.use(express.json());
+app.use(express.static(__dirname + "/front"));
+app.use('/doc',express.static(__dirname + "/insomnia"));
 app.use(routes);
-// app.get('/',(req,res)=> res.send('oioi'))
 app.listen(port, () => console.log("ativo"));
