@@ -42,9 +42,16 @@
         </div>
         <div class="textareas">
             <h2>PALAVRAS FILTRADAS</h2>
-            <div class="linha"></div>
 
-            <textarea id="resposta"></textarea>
+            <div class="linha"></div>
+            <textarea id="resposta" readonly></textarea>
+            <div class="boxHeader">
+                <div class="toggle" onclick="toggle()">
+                    <span id="text">Texto</span>
+                    <span id="array">Array</span>
+                    <div class="toggleSwap"></div>
+                </div>
+            </div>
         </div>
     </main>
     <script src="./script.js"></script>

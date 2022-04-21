@@ -11,6 +11,7 @@ header {
   display: flex;
   align-items: center;
   padding: 0.5rem 0;
+  flex-wrap: wrap;
 }
 
 header h1 {
@@ -34,8 +35,10 @@ textarea {
   background-color: #f1f1f2;
   border-radius: 8px;
   padding: 1rem;
-  width: 300px;
+  min-width: 200px;
+  width: 30vw;
   min-height: 250px;
+  max-width: 600px;
   resize: vertical;
 }
 
@@ -57,6 +60,7 @@ h2 {
   color: #fdf8fa;
   font-weight: bold;
   font-size: 14px;
+  cursor: pointer;
 }
 
 .linha {
@@ -82,7 +86,60 @@ label {
   label {
     width: 210px;
   }
+  header{
+    justify-content: center;
+  }
+  header h1{
+    margin: 0;
+    text-align: center;
+  }
 }
+
+.boxHeader{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 30vw;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.toggle{
+  background-color: #f2f2f3;
+  border: #ea4c89 2px solid;
+  padding: 4px 0.5rem;
+  border-radius: 18px;
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  position: relative;
+  height: 20px;
+  cursor: pointer;
+}
+
+.toggle span{
+  z-index: 100;
+  transition: 300ms ease-in-out;
+  cursor: pointer;
+
+}
+
+#text{
+  color: #f2f2f3;
+}
+
+.toggleSwap{
+  position: absolute;
+  background-color: #ea4c89;
+  width: 60px;
+  height: 26px;
+  border-radius: 18px;
+  top: 1px;
+  left: 1px;
+  transition: 300ms ease-in-out;
+
+}
+
 input {
   position: relative !important;
   -webkit-appearance: none;
