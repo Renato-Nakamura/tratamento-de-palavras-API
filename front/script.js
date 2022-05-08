@@ -1,6 +1,11 @@
 let mode = "text";
 let apiWords;
+let socket = io()
 
+socket.on('verifyWords',(words)=>{
+  apiWords = words;
+  printFilteredWords();
+})
 const verificar = () => {
   let words = document.querySelector("#words").value;
   const resposta = document.querySelector("#resposta");
@@ -18,6 +23,7 @@ const verificar = () => {
     },
     words: words,
   };
+  socket.emit('verifyWords',body)
   fetch("/verificar", {
     method: "POST",
     headers: {
@@ -28,8 +34,8 @@ const verificar = () => {
     .then((r) => r.json())
     .then((a) => {
       console.log(a);
-      apiWords = a;
-      printFilteredWords();
+      // apiWords = a;
+      // printFilteredWords();
     });
 };
 
